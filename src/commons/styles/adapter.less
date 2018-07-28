@@ -1,0 +1,16 @@
+// 设计稿宽度
+@psdWidth: 750;
+
+// 基准值
+@baseSize: 100;
+
+// 需要适配的设备宽度
+@deviceWidthList: 320px, 360px, 750px, 384px, 400px, 414px, 424px, 480px, 540px, 640px, 720px, 750px;
+
+.adapter(@index) when (@index <= length(@deviceWidthList)) {
+  @media screen and (min-width: extract(@deviceWidthList, @index)) {
+    font-size: extract(@deviceWidthList, @index) / @psdWidth * @baseSize;
+  }
+  .adapter(@index + 1)
+}
+
